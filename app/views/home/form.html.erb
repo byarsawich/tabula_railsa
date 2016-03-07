@@ -4,9 +4,7 @@
   Do you like Chocolate? <%= params[:chocolate] ? "Yes!" : "No" %><br>
   Do you like Rainbows? <%= params[:rainbows] ? "Yes!" : "No" %><br>
   Do you like Puppies? <%= params[:puppies] ? "Yes!" : "No" %><br>
-  <% if Rails.env.development? %>
-    Do you like Cold Hard Cash? <%= params[:cash] ? "Yes!" : "No" %><br>
-  <% end %>
+  Do you like Cold Hard Cash? <%= params[:cash] ? "Yes!" : "No" %><br>
 <% else %>
   <%= form_tag home_form_path do %>
     <div>
@@ -24,9 +22,11 @@
         <li class="item">
           <%= check_box_tag :puppies %> I like <%= label_tag :puppies %>
         </li>
-        <li class="item">
-          <%= check_box_tag :cold_hard_cash %> I like <%= label_tag :cold_hard_cash %>
-        </li>
+        <% if Rails.env.development? %>
+          <li class="item">
+            <%= check_box_tag :cold_hard_cash %> I like <%= label_tag :cold_hard_cash %>
+          </li>
+        <% end %>
       </ul>
     </div>
     <%= submit_tag %>
