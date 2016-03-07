@@ -4,7 +4,9 @@
   Do you like Chocolate? <%= params[:chocolate] ? "Yes!" : "No" %><br>
   Do you like Rainbows? <%= params[:rainbows] ? "Yes!" : "No" %><br>
   Do you like Puppies? <%= params[:puppies] ? "Yes!" : "No" %><br>
-  Do you like Cold Hard Cash? <%= params[:cash] ? "Yes!" : "No" %><br>
+  <% if Rails.env.development? %>
+    Do you like Cold Hard Cash? <%= params[:cash] ? "Yes!" : "No" %><br>
+  <% end %>
 <% else %>
   <%= form_tag home_form_path do %>
     <div>
