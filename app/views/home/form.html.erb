@@ -8,25 +8,25 @@
     Do you like Cold Hard Cash? <%= params[:cash] ? "Yes!" : "No" %><br>
   <% end %>
 <% else %>
-  <%= form_tag home_form_path do %>
+  <%= form_for @survey do |f| %>
     <div>
-      Name: <%= text_field_tag :name %>
+      Name: <%= f.text_field :name %>
     </div>
     <div>
       Favorites:
       <ul>
         <li class="item">
-          <%= check_box_tag :chocolate %> I like <%= label_tag :chocolate %>
+          <%= f.check_box :chocolate %> I like <%= label_tag :chocolate %>
         </li>
         <li class="item">
-          <%= check_box_tag :rainbows %> I like <%= label_tag :rainbows %>
+          <%= f.check_box :rainbows %> I like <%= label_tag :rainbows %>
         </li>
         <li class="item">
-          <%= check_box_tag :puppies %> I like <%= label_tag :puppies %>
+          <%= f.check_box :puppies %> I like <%= label_tag :puppies %>
         </li>
         <% if Rails.env.development? %>
           <li class="item">
-            <%= check_box_tag :cold_hard_cash %> I like <%= label_tag :cold_hard_cash %>
+            <%= f.check_box :cash %> I like <%= label_tag :cold_hard_cash %>
           </li>
         <% end %>
       </ul>
