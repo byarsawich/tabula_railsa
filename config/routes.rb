@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root 'home#form'
-  get 'home/form'
+  root 'home#new'
+  get 'home/new'
   post 'surveys' => 'home#create'
-  get 'home/form/:id' => 'home#show', as: 'survey'
+  get 'home/:id' => 'home#show', as: 'survey'
 end

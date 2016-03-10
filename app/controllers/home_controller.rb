@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  def form
+  def new
     @survey = Survey.new
   end
 
