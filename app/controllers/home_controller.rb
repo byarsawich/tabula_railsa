@@ -1,11 +1,18 @@
 class HomeController < ApplicationController
+  before_action :set_survey, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @surveys = Survey.all
+  end
 
   def new
     @survey = Survey.new
   end
 
+  def edit
+  end
+
   def show
-    @survey = Survey.find(params[:id])
   end
 
   def create
@@ -21,8 +28,22 @@ class HomeController < ApplicationController
     end
   end
 
-  def  survey_params
-    params.require(:survey).permit(:name, :chocolate, :rainbows, :puppies, :cash)
+  def update
+
   end
+
+  def destroy
+    @survey.destroy
+    redirect_to surveys_url, notice: 'Survey was successfully destroyed.'
+  end
+
+  private
+    def set_survey
+      @survey = Survey.find(params[:id])
+    end
+
+    def survey_params
+      params.require(:survey).permit(:name, :chocolate, :rainbows, :puppies, :cash)
+    end
 
 end
